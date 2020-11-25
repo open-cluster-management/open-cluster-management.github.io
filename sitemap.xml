@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/concepts/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/concepts/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/install-hub/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/register-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/community/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/install-application/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/</loc>
+  </url>
+  
+</urlset>

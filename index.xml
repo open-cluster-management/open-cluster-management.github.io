@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What is Open Cluster Management? on Open Cluster Management</title>
+    <link>http://open-cluster-management.github.io/</link>
+    <description>Recent content in What is Open Cluster Management? on Open Cluster Management</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://open-cluster-management.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture</title>
+      <link>http://open-cluster-management.github.io/concepts/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/concepts/architecture/</guid>
+      <description>This page tells you the architecture and basic concepts in open-cluster-management.
+   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster, The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
+    </item>
+    
+    <item>
+      <title>Install Hub</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-hub/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-hub/</guid>
+      <description>The are two ways to install the core control plane of open cluster management that includes cluster registration and manifests distribution.
+   Prerequisite Install from source Install from OperatorHub     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Prepare one Kubernetes cluster to function as the hub. For example, use kind to create a hub cluster.</description>
+    </item>
+    
+    <item>
+      <title>Install Klusterlet</title>
+      <link>http://open-cluster-management.github.io/getting-started/register-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/register-cluster/</guid>
+      <description>After the hub is installed, you need to install the klusterlet on another cluster so that it can be registered and managed by the hub.
+   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Ensure the open-cluster-management hub is installed. See Install Hub for more information.</description>
+    </item>
+    
+    <item>
+      <title>Install Application management</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-application/</guid>
+      <description>After hub is installed, you could install the application management components to the hub.
+   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Ensure the open-cluster-management hub is installed. See Install Hub for more information.
+Install from source Clone the multicloud-operators-subscription
+git clone https://github.</description>
+    </item>
+    
+  </channel>
+</rss>
