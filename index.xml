@@ -17,16 +17,6 @@
     </item>
     
     <item>
-      <title>Getting Help</title>
-      <link>http://open-cluster-management.github.io/community/getting-help/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/community/getting-help/</guid>
-      <description>Welcome to the Open Cluster Management community! We want to hear from you. How you are using open-cluster-management? What we can do to make it better? To understand how the Open Cluster Management community is governed, visit the Community repo.
-Github Project Check out the project and consider contributing. You can pick up an issue to work on, or report a bug by creating a new issue here. When your code is ready to be reviewed, you can propose a pull request.</description>
-    </item>
-    
-    <item>
       <title>Install Hub</title>
       <link>http://open-cluster-management.github.io/getting-started/install-hub/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
