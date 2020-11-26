@@ -5,7 +5,11 @@
     <link>http://open-cluster-management.github.io/</link>
     <description>Recent content in What is Open Cluster Management? on Open Cluster Management</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://open-cluster-management.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    
+	<atom:link href="http://open-cluster-management.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Architecture</title>
       <link>http://open-cluster-management.github.io/concepts/architecture/</link>
