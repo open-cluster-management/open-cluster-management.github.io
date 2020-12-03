@@ -168,14 +168,35 @@
             
             <li>
             
+                <span class="flex">Community</span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
                 <span class="flex">
-                    <a href="/community/" class="gdoc-nav__entry ">
-                        Community
+                    <a href="/community/resource/" class="gdoc-nav__entry ">
+                        Resources
                     </a>
                 </span>
             
 
             
+            
+            </li>
+            
+            
+        
+    </ul>
+
             
             </li>
             
@@ -216,31 +237,6 @@
                 <a href="https://github.com/open-cluster-management"
                     class="gdoc-nav__entry ">
                     Github
-                </a>
-            </span>
-        
-
-        
-        
-    </li>
-
-
-    
-    
-
-    <li>
-        
-        
-            
-            
-            
-            
-
-            <span class="flex">
-                <svg class="icon slack"><use xlink:href="#slack"></use></svg>
-                <a href="TBA"
-                    class="gdoc-nav__entry ">
-                    Slack
                 </a>
             </span>
         
@@ -318,17 +314,31 @@
 <div class="gdoc-page__anchorwrap"><h2 id="install-from-source">Install from source<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-application/#install-from-source" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from source" href="#install-from-source"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>Clone the <code>multicloud-operators-subscription</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/multicloud-operators-subscription
-</code></pre></div><p>Deploy a stand-alone subscription operator</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> multicloud-operators-subscription
-kubectl apply -f deploy/standalone
+</code></pre></div><p>Deploy subscription operators to the hub</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/hub_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/hub-kubeconfig</span>
+<span class="nb">cd</span> multicloud-operators-subscription
+make deploy-community-hub
+</code></pre></div><p>Deploy subscription operators to managed cluster(s)</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">HUB_KUBECONFIG</span><span class="o">=</span>&lt;/path/to/hub_cluster/.kube/config&gt; <span class="c1"># export HUB_KUBECONFIG=~/hub-kubeconfig</span>
+<span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/managed_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/cluster1-kubeconfig</span>
+<span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
+make deploy-community-managed
 </code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-from-operatorhub">Install from OperatorHub<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-application/#install-from-operatorhub" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from OperatorHub" href="#install-from-operatorhub"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>If you are using Openshift or have <code>OLM</code> installed in your cluster, you are able to install the multicluster subscription operator with a released version from the operator hub. Details can be found <a href="https://operatorhub.io/operator/multicluster-operators-subscription">here</a></p>
 <div class="gdoc-page__anchorwrap"><h2 id="what-is-next">What is next<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-application/#what-is-next" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What is next" href="#what-is-next"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>After a successfull deployment, test the subscription operator with a <code>helm</code> subscription</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl apply -f examples/helmrepo-channel
-kubectl patch subscriptions.apps.open-cluster-management.io simple --type<span class="o">=</span><span class="s1">&#39;json&#39;</span> -p<span class="o">=</span><span class="s1">&#39;[{&#34;op&#34;: &#34;replace&#34;, &#34;path&#34;: &#34;/spec/placement/local&#34;, &#34;value&#34;: true}]&#39;</span>
-kubectl get appsub/simple -o yaml
-
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/hub_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/hub-kubeconfig</span>
+<span class="nb">cd</span> multicloud-operators-subscription
+kubectl apply -f examples/helmrepo-hub-channel
+</code></pre></div><p>After a while, you should see the subscription propagated to the managed cluster and the helm app installed.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ <span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/managed_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/cluster1-kubeconfig</span>
+$ kubectl get appsub 
+NAME        STATUS       AGE    LOCAL PLACEMENT   TIME WINDOW
+nginx-sub   Subscribed   107m   <span class="nb">true</span>  
+$ kubectl get pod
+NAME                                                   READY   STATUS      RESTARTS   AGE
+nginx-ingress-47f79-controller-6f495bb5f9-lpv7z        1/1     Running     <span class="m">0</span>          108m
+nginx-ingress-47f79-default-backend-7559599b64-rhwgm   1/1     Running     <span class="m">0</span>          108m
 </code></pre></div>
 
     </article>
