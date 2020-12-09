@@ -321,14 +321,14 @@ kind get kubeconfig --name cluster1 --internal &gt; ~/cluster1-kubeconfig
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/registration-operator
 </code></pre></div><p>Export the soon-to-be managed cluster kube config as an environment variable</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/managed_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/cluster1-kubeconfig</span>
-</code></pre></div><p>Deploy agent on a managed <code>kind</code> cluster</p>
+</code></pre></div><p>Deploy agent on a managed <code>kind</code> cluster.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> registration-operator
 <span class="nb">export</span> <span class="nv">KLUSTERLET_KIND_KUBECONFIG</span><span class="o">=</span><span class="nv">$KUBECONFIG</span>
 <span class="nb">export</span> <span class="nv">KIND_CLUSTER</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export KIND_CLUSTER=cluster1</span>
 <span class="nb">export</span> <span class="nv">HUB_KIND_KUBECONFIG</span><span class="o">=</span>&lt;/path/to/hub_kind_cluster/.kube/config&gt; <span class="c1"># export HUB_KIND_KUBECONFIG=~/hub-kubeconfig</span>
 make deploy-spoke-kind <span class="c1"># make deploy-spoke-kind GO_REQUIRED_MIN_VERSION:= # if you see warnings regarding go version</span>
 </code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-from-operatorhub">Install from OperatorHub<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#install-from-operatorhub" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from OperatorHub" href="#install-from-operatorhub"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>If you are using Openshift or have <code>OLM</code> installed in your cluster, you are able to install the klusterlet with a released version from operator hub. Details can be found <a href="https://operatorhub.io/operator/klusterlet">here</a></p>
+<p>If you are using OpenShift or have <code>OLM</code> installed in your cluster, you are able to install the klusterlet with a released version from OperatorHub. Details can be found <a href="https://operatorhub.io/operator/klusterlet">here</a>.</p>
 <div class="gdoc-page__anchorwrap"><h2 id="what-is-next">What is next<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#what-is-next" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What is next" href="#what-is-next"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>After a successful deployment, a <code>certificatesigningrequest</code> and a <code>managedcluster</code> will
 be created on the hub.</p>
@@ -340,13 +340,13 @@ csr-&lt;suffix&gt;                      76m   system:node:hub-control-plane   Ap
 $ kubectl get managedcluster
 NAME                    HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 &lt;managed cluster name&gt;  <span class="nb">false</span>          https://localhost                           57s
-</code></pre></div><p>Next approve the certificate and set managecluster to be accepted by hub with following commands</p>
+</code></pre></div><p>Next approve the certificate and set managecluster to be accepted by hub with following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl certificate approve <span class="o">{</span>csr name<span class="o">}</span>
 kubectl patch managedcluster <span class="o">{</span>managed cluster name<span class="o">}</span> -p<span class="o">=</span><span class="s1">&#39;{&#34;spec&#34;:{&#34;hubAcceptsClient&#34;:true}}&#39;</span> --type<span class="o">=</span>merge
-</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on hub cluster, you should be able to see that the cluster is registered</p>
+</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on hub cluster, you should be able to see that the cluster is registered.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">NAME                     HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 &lt;managed cluster name&gt;   <span class="nb">true</span>           https://localhost      True     True        7m58s
-</code></pre></div><p>Create a <code>manifest-work.yaml</code> as below</p>
+</code></pre></div><p>Create a <code>manifest-work.yaml</code> as shown in this example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>work.open-cluster-management.io/v1<span class="w">
 </span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>ManifestWork<span class="w">
 </span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
@@ -366,10 +366,10 @@ kubectl patch managedcluster <span class="o">{</span>managed cluster name<span c
 </span><span class="w">          </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
 </span><span class="w">          </span><span class="k">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;sh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;echo &#34;Hello, Kubernetes!&#34; &amp;&amp; sleep 3600&#39;</span><span class="p">]</span><span class="w">
 </span><span class="w">        </span><span class="k">restartPolicy</span><span class="p">:</span><span class="w"> </span>OnFailure<span class="w">
-</span></code></pre></div><p>Apply the yaml file to the hub</p>
+</span></code></pre></div><p>Apply the yaml file to the hub.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl apply -f manifest-work.yaml
 kubectl -n &lt;managed cluster name&gt; get manifestwork/mw-01 -o yaml <span class="c1"># kubectl -n cluster1 get manifestwork/mw-01 -o yaml</span>
-</code></pre></div><p>Check on the managed cluster and see the <em>hello</em> Pod has been deployed from the hub</p>
+</code></pre></div><p>Check on the managed cluster and see the <em>hello</em> Pod has been deployed from the hub.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ <span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>&lt;/path/to/managed_cluster/.kube/config&gt; <span class="c1"># export KUBECONFIG=~/cluster1-kubeconfig</span>
 $ kubectl -n default get pod
 NAME    READY   STATUS    RESTARTS   AGE
