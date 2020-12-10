@@ -17,7 +17,7 @@
       
       <guid>http://open-cluster-management.github.io/concepts/architecture/</guid>
       <description>This page tells you the architecture and basic concepts in open-cluster-management.
-   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster, The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
+   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster. The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
     </item>
     
   </channel>

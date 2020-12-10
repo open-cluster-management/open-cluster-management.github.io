@@ -340,10 +340,10 @@ csr-&lt;suffix&gt;                      76m   system:node:hub-control-plane   Ap
 $ kubectl get managedcluster
 NAME                    HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 &lt;managed cluster name&gt;  <span class="nb">false</span>          https://localhost                           57s
-</code></pre></div><p>Next approve the certificate and set managecluster to be accepted by hub with following commands:</p>
+</code></pre></div><p>Next approve the certificate and set managecluster to be accepted by the hub with following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl certificate approve <span class="o">{</span>csr name<span class="o">}</span>
 kubectl patch managedcluster <span class="o">{</span>managed cluster name<span class="o">}</span> -p<span class="o">=</span><span class="s1">&#39;{&#34;spec&#34;:{&#34;hubAcceptsClient&#34;:true}}&#39;</span> --type<span class="o">=</span>merge
-</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on hub cluster, you should be able to see that the cluster is registered.</p>
+</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on the hub cluster, you should be able to see that the cluster is registered.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">NAME                     HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 &lt;managed cluster name&gt;   <span class="nb">true</span>           https://localhost      True     True        7m58s
 </code></pre></div><p>Create a <code>manifest-work.yaml</code> as shown in this example:</p>
