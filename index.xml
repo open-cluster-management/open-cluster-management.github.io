@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>Contribute to Open Cluster Management</title>
+      <link>http://open-cluster-management.github.io/contribute/contribute/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/contribute/contribute/</guid>
+      <description>We know you&amp;rsquo;ve got great ideas for improving Open Cluster Management. So roll up your sleeves and come join us in the community!
+Get Started All contributions are welcome! Open Cluster Management uses the Apache 2 license. Please open issues for any bugs or problems you encounter, ask questions in the #open-cluster-mgmt on Kubernetes Slack Channel, or get involved joining the open-cluster-management mailing group.
+Contribute to the Source  Join the Mailing group Attend an upcoming Community meetings Fork the repository you wish to work on.</description>
+    </item>
+    
+    <item>
       <title>Resources</title>
       <link>http://open-cluster-management.github.io/community/resource/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -32,8 +43,7 @@ GitHub
 Mailing group
 Slack
 Community meetings
-Youtube channel
-Get Involved Check out the project and consider contributing.</description>
+Youtube channel</description>
     </item>
     
     <item>

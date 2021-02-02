@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>http://open-cluster-management.github.io/contribute/contribute/</loc>
+  </url>
+  
+  <url>
     <loc>http://open-cluster-management.github.io/community/resource/</loc>
   </url>
   
@@ -32,6 +36,10 @@
   
   <url>
     <loc>http://open-cluster-management.github.io/getting-started/install-application/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/contribute/</loc>
   </url>
   
   <url>
