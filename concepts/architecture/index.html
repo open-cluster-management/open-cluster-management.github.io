@@ -84,6 +84,21 @@
             </li>
             
             
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/concepts/roadmap/" class="gdoc-nav__entry ">
+                        Roadmap
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
         
     </ul>
 
@@ -309,6 +324,31 @@
     </li>
 
 
+    
+    
+
+    <li>
+        
+        
+            
+            
+            
+            
+
+            <span class="flex">
+                <svg class="icon youtube"><use xlink:href="#youtube"></use></svg>
+                <a href="https://www.youtube.com/channel/UC7xxOh2jBM5Jfwt3fsBzOZw"
+                    class="gdoc-nav__entry ">
+                    YouTube
+                </a>
+            </span>
+        
+
+        
+        
+    </li>
+
+
 </ul>
 
 
@@ -366,6 +406,11 @@
         <li><a href="#klusterlet">Klusterlet</a></li>
         <li><a href="#managed-cluster">Managed cluster</a></li>
         <li><a href="#application-lifecycle-work-in-progress">Application lifecycle (work in progress)</a></li>
+        <li><a href="#cluster-lifecycle-work-in-progress">Cluster lifecycle (work in progress)</a>
+          <ul>
+            <li><a href="#application-console-work-in-progress">Application console (work in progress)</a></li>
+          </ul>
+        </li>
         <li><a href="#governance-and-risk-work-in-progress">Governance and risk (work in progress)</a></li>
       </ul></nav><hr></div>
 
@@ -382,6 +427,10 @@ The hub cluster aggregates information from multiple clusters by using an asynch
 <p>The <em>application lifecycle</em> defines the processes that are used to manage application resources on your managed clusters.
 A multi-cluster application uses a Kubernetes specification, but with additional automation of the deployment and lifecycle management of resources to individual clusters.
 A multi-cluster application allows you to deploy resources on multiple clusters, while maintaining easy-to-reconcile service routes, as well as full control of Kubernetes resource updates for all aspects of the application.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="cluster-lifecycle-work-in-progress">Cluster lifecycle (work in progress)<a data-clipboard-text="http://open-cluster-management.github.io/concepts/architecture/#cluster-lifecycle-work-in-progress" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Cluster lifecycle (work in progress)" href="#cluster-lifecycle-work-in-progress"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>The <em>cluster lifecycle</em> defines the process the lifecycle of a cluster on the hub side. It includes the create, destroy of cluster through <a href="https://github.com/openshift/hive">hive</a>, the attach and detach functionality, the addon lifecycle and a UI to give a better user experience on that process.</p>
+<div class="gdoc-page__anchorwrap"><h3 id="application-console-work-in-progress">Application console (work in progress)<a data-clipboard-text="http://open-cluster-management.github.io/concepts/architecture/#application-console-work-in-progress" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Application console (work in progress)" href="#application-console-work-in-progress"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<p>The <em>Application console</em> defines the user interface used to create and manage application resources deployed on your managed clusters through the use of <em>Application lifecycle</em> subscription operators.</p>
 <div class="gdoc-page__anchorwrap"><h2 id="governance-and-risk-work-in-progress">Governance and risk (work in progress)<a data-clipboard-text="http://open-cluster-management.github.io/concepts/architecture/#governance-and-risk-work-in-progress" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Governance and risk (work in progress)" href="#governance-and-risk-work-in-progress"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p><em>Governance and risk</em> is the term used to define the processes that are used to manage security and compliance from the hub cluster. Ensure the security of your cluster with the extensible policy framework. After you configure a hub cluster and a managed cluster, you can create, modify and delete policies on the hub and apply policies to managed clusters.</p>
 

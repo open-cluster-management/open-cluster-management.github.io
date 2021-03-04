@@ -17,7 +17,7 @@
       
       <guid>http://open-cluster-management.github.io/concepts/architecture/</guid>
       <description>This page tells you the architecture and basic concepts in open-cluster-management.
-   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster. The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
+   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Cluster lifecycle (work in progress)  Application console (work in progress)   Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster. The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       
       <guid>http://open-cluster-management.github.io/contribute/contribute/</guid>
       <description>We know you&amp;rsquo;ve got great ideas for improving Open Cluster Management. So roll up your sleeves and come join us in the community!
-Get Started All contributions are welcome! Open Cluster Management uses the Apache 2 license. Please open issues for any bugs or problems you encounter, ask questions in the #open-cluster-mgmt on Kubernetes Slack Channel, or get involved joining the open-cluster-management mailing group.
+Getting Started All contributions are welcome! Open Cluster Management uses the Apache 2 license. Please open issues for any bugs or problems you encounter, ask questions in the #open-cluster-mgmt on Kubernetes Slack Channel, or get involved joining the open-cluster-management mailing group.
 Contribute to the Source  Join the Mailing group Attend an upcoming Community meetings Fork the repository you wish to work on.</description>
     </item>
     
@@ -43,7 +43,17 @@ GitHub
 Mailing group
 Slack
 Community meetings
-Youtube channel</description>
+YouTube channel</description>
+    </item>
+    
+    <item>
+      <title>Roadmap</title>
+      <link>http://open-cluster-management.github.io/concepts/roadmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/concepts/roadmap/</guid>
+      <description>This page tells you the roadmap for components in open-cluster-management.
+Work in progress</description>
     </item>
     
     <item>
