@@ -17,7 +17,7 @@
       
       <guid>http://open-cluster-management.github.io/concepts/architecture/</guid>
       <description>This page tells you the architecture and basic concepts in open-cluster-management.
-   Hub cluster Klusterlet Managed cluster Application lifecycle (work in progress) Cluster lifecycle (work in progress)  Application console (work in progress)   Governance and risk (work in progress)     Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster. The hub cluster aggregates information from multiple clusters by using an asynchronous work request model.</description>
+   Hub cluster Klusterlet Managed cluster Application lifecycle Cluster lifecycle (work in progress)  Discovery (work in progress) Application console (work in progress)   Governance and risk (work in progress) Multiclusterhub Operator (work in progress)  Multiclusterhub Repo (work in progress)       Hub cluster The hub cluster is the common term that is used to define the central controller that runs in a Kubernetes cluster.</description>
     </item>
     
     <item>
@@ -92,6 +92,17 @@ Ensure golang is installed, if you are planning to install from the source.
 Ensure the open-cluster-management hub is installed. See Install Hub for more information.
 Install from source Clone the multicloud-operators-subscription
 git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>Install Discovery</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-discovery/</guid>
+      <description>After the hub is installed, the discovery component can be installed to help discover available clusters.
+   Install from source     Install from source To build, run, and sample the discovery operator, clone the repository below and follow the instructions within the README.
+git clone https://github.com/open-cluster-management/discovery.git </description>
     </item>
     
   </channel>
