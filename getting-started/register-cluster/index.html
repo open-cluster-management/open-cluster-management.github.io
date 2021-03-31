@@ -441,7 +441,6 @@ kind get kubeconfig --name cluster1 --internal &gt; ~/cluster1-kubeconfig
 </code></pre></div><p>Deploy agent on a managed <code>kind</code> cluster.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> registration-operator
 <span class="nb">export</span> <span class="nv">KLUSTERLET_KIND_KUBECONFIG</span><span class="o">=</span>~/cluster1-kubeconfig
-<span class="nb">export</span> <span class="nv">KIND_CLUSTER</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export KIND_CLUSTER=cluster1</span>
 <span class="nb">export</span> <span class="nv">HUB_KIND_KUBECONFIG</span><span class="o">=</span>&lt;/path/to/hub_kind_cluster/.kube/config&gt; <span class="c1"># export HUB_KIND_KUBECONFIG=~/hub-kubeconfig</span>
 make deploy-spoke-kind <span class="c1"># make deploy-spoke-kind GO_REQUIRED_MIN_VERSION:= # if you see warnings regarding go version</span>
 </code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-from-operatorhub">Install from OperatorHub<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#install-from-operatorhub" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from OperatorHub" href="#install-from-operatorhub"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
