@@ -59,5 +59,29 @@ git clone https://github.</description>
 git clone https://github.com/open-cluster-management/discovery.git </description>
     </item>
     
+    <item>
+      <title>Install Policy Framework</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-policy-framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-policy-framework/</guid>
+      <description>After hub and klusterlet is installed, you could install the policy framework components to the hub and the managed clusters.
+   Prerequisite Install from prebuilt images on Quay.io     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Prepare one Kubernetes cluster to function as the hub. For example, use kind to create a hub cluster.</description>
+    </item>
+    
+    <item>
+      <title>Install Policy Controllers</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-policy-controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-policy-controllers/</guid>
+      <description>After policy framework is installed, you could install the policy controllers to the managed clusters.
+   Prerequisite Install configuration policy controller Install certificate policy controller Install IAM policy controller What is next More policies     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Prepare one Kubernetes cluster to function as the hub. For example, use kind to create a hub cluster.</description>
+    </item>
+    
   </channel>
 </rss>
