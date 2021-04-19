@@ -481,10 +481,10 @@ NAME                    HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE
 </code></pre></div><p>Next approve the certificate and set managecluster to be accepted by the hub with following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl certificate approve <span class="o">{</span>csr name<span class="o">}</span>
 kubectl patch managedcluster <span class="o">{</span>managed cluster name<span class="o">}</span> -p<span class="o">=</span><span class="s1">&#39;{&#34;spec&#34;:{&#34;hubAcceptsClient&#34;:true}}&#39;</span> --type<span class="o">=</span>merge
-</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on the hub cluster, you should be able to see that the cluster is registered.</p>
+</code></pre></div><p>Run <code>kubectl get managedcluster</code> again on the hub cluster. You should be able to see that the managed cluster is registered now.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">NAME                     HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 &lt;managed cluster name&gt;   <span class="nb">true</span>           https://localhost      True     True        7m58s
-</code></pre></div><p>Create a <code>manifest-work.yaml</code> as shown in this example:</p>
+</code></pre></div><p>After the managed cluster is registered, test that you can deploy a pod to the managed cluster from the hub cluster. Create a <code>manifest-work.yaml</code> as shown in this example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>work.open-cluster-management.io/v1<span class="w">
 </span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>ManifestWork<span class="w">
 </span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
@@ -506,7 +506,8 @@ kubectl patch managedcluster <span class="o">{</span>managed cluster name<span c
 </span><span class="w">        </span><span class="k">restartPolicy</span><span class="p">:</span><span class="w"> </span>OnFailure<span class="w">
 </span></code></pre></div><p>Apply the yaml file to the hub cluster.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl apply -f manifest-work.yaml
-kubectl -n &lt;managed cluster name&gt; get manifestwork/mw-01 -o yaml <span class="c1"># kubectl -n cluster1 get manifestwork/mw-01 -o yaml</span>
+</code></pre></div><p>Verify that the <code>manifestwork</code> resource was applied to the hub.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl -n &lt;managed cluster name&gt; get manifestwork/mw-01 -o yaml <span class="c1"># kubectl -n cluster1 get manifestwork/mw-01 -o yaml</span>
 </code></pre></div><p>Check on the managed cluster and see the <em>hello</em> Pod has been deployed from the hub cluster.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context kind-cluster1
 $ kubectl -n default get pod
