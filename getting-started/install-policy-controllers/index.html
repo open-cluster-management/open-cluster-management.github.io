@@ -126,8 +126,8 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-hub/" class="gdoc-nav__entry ">
-                        Install Hub
+                    <a href="/getting-started/install-cluster-manager/" class="gdoc-nav__entry ">
+                        Install Cluster Manager
                     </a>
                 </span>
             
@@ -172,33 +172,7 @@
             
             
             
-            <li>
             
-                <span class="flex">
-                    <a href="/getting-started/install-discovery/" class="gdoc-nav__entry ">
-                        Install Discovery
-                    </a>
-                </span>
-            
-
-            
-            
-            </li>
-            
-            
-            
-            <li>
-            
-                <span class="flex">
-                    <a href="/getting-started/install-multiclusterhub-operator/" class="gdoc-nav__entry ">
-                        Install MultiClusterHub Operator
-                    </a>
-                </span>
-            
-
-            
-            
-            </li>
             
             
         
@@ -480,7 +454,7 @@
 <p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation">kustomize</a> are installed.</p>
 <p>Ensure <a href="https://golang.org/doc/install">golang</a> is installed, if you are planning to install from the source.</p>
 <p>Prepare one Kubernetes cluster to function as the hub. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you will need <a href="https://docs.docker.com/get-started">docker</a> installed and running.</p>
-<p>Ensure the open-cluster-management <em>policy framework</em> is installed. See <a href="install-policy-framework.md">Install Install Policy Framework</a> for more information.</p>
+<p>Ensure the open-cluster-management policy framework is installed. See <a href="../install-policy-framework">Install Policy Framework</a> for more information.</p>
 <div class="gdoc-page__anchorwrap"><h2 id="install-configuration-policy-controller">Install configuration policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-configuration-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install configuration policy controller" href="#install-configuration-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>Clone the <code>config-policy-controller</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/config-policy-controller.git

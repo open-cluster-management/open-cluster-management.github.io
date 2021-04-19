@@ -57,11 +57,11 @@ Work in progress</description>
     </item>
     
     <item>
-      <title>Install Hub</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-hub/</link>
+      <title>Install Cluster Manager</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://open-cluster-management.github.io/getting-started/install-hub/</guid>
+      <guid>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</guid>
       <description>The are two ways to install the core control plane of open cluster management that includes cluster registration and manifests distribution.
    Prerequisite Install from source Install from OperatorHub     Prerequisite Ensure kubectl and kustomize are installed.
 Ensure golang is installed, if you are planning to install from the source.
@@ -74,10 +74,10 @@ Prepare one Kubernetes cluster to function as the hub. For example, use kind to 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://open-cluster-management.github.io/getting-started/register-cluster/</guid>
-      <description>After the hub is installed, you need to install the klusterlet on another cluster so that it can be registered and managed by the hub.
+      <description>After the cluster manager is installed on the hub cluster, you need to install the klusterlet agent on another cluster so that it can be registered and managed by the hub cluster.
    Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
 Ensure golang is installed, if you are planning to install from the source.
-Ensure the open-cluster-management hub is installed. See Install Hub for more information.</description>
+Ensure the open-cluster-management cluster manager is installed on the hub cluster.</description>
     </item>
     
     <item>
@@ -86,12 +86,11 @@ Ensure the open-cluster-management hub is installed. See Install Hub for more in
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://open-cluster-management.github.io/getting-started/install-application/</guid>
-      <description>After hub is installed, you could install the application management components to the hub.
+      <description>After the cluster manager is installed, you could install the application management components to the hub cluster.
    Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
 Ensure golang is installed, if you are planning to install from the source.
-Ensure the open-cluster-management hub is installed. See Install Hub for more information.
-Install from source Clone the multicloud-operators-subscription
-git clone https://github.</description>
+Ensure the open-cluster-management cluster manager is installed. See Install Cluster Manager for more information.
+Install from source Clone the multicloud-operators-subscription</description>
     </item>
     
     <item>
@@ -120,7 +119,7 @@ git clone https://github.com/open-cluster-management/discovery.git </description
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://open-cluster-management.github.io/getting-started/install-policy-framework/</guid>
-      <description>After hub and klusterlet is installed, you could install the policy framework components to the hub and the managed clusters.
+      <description>After cluster manager and klusterlet are installed, you could install the policy framework components to the hub and the managed clusters.
    Prerequisite Install from prebuilt images on Quay.io     Prerequisite Ensure kubectl and kustomize are installed.
 Ensure golang is installed, if you are planning to install from the source.
 Prepare one Kubernetes cluster to function as the hub. For example, use kind to create a hub cluster.</description>
