@@ -434,7 +434,7 @@
     
 
 
-<p>After cluster manager and klusterlet are installed, you could install the policy framework components to the hub and the managed clusters.</p>
+<p>After the cluster manager and klusterlet are installed, you can install the policy framework components to the hub and the managed clusters.</p>
 <!-- spellchecker-disable -->
 
 
@@ -447,43 +447,74 @@
 
 <!-- spellchecker-enable -->
 <div class="gdoc-page__anchorwrap"><h2 id="prerequisite">Prerequisite<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-framework/#prerequisite" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Prerequisite" href="#prerequisite"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation">kustomize</a> are installed.</p>
-<p>Ensure <a href="https://golang.org/doc/install">golang</a> is installed, if you are planning to install from the source.</p>
-<p>Prepare one Kubernetes cluster to function as the hub. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you will need <a href="https://docs.docker.com/get-started">docker</a> installed and running.</p>
-<p>Ensure the open-cluster-management cluster manager is installed. See <a href="../install-cluster-manager">Install Cluster Manager</a> for more information.</p>
-<p>Ensure the open-cluster-management klusterlet is installed. See <a href="../register-cluster">Install Klusterlet</a> for more information.</p>
-<p>Ensure the open-cluster-management application management is installed. See <a href="../install-application">Install Application management</a> for more information.</p>
+<p>You must meet the following prerequisites to install the policy framework:</p>
+<ul>
+<li>
+<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl"><code>kubectl</code></a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation"><code>kustomize</code></a> are installed.</p>
+</li>
+<li>
+<p>Ensure <a href="https://golang.org/doc/install">Golang</a> is installed, if you are planning to install from the source.</p>
+</li>
+<li>
+<p>Prepare one Kubernetes cluster to function as the hub cluster. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you must install and run <a href="https://docs.docker.com/get-started">Docker</a>.</p>
+</li>
+<li>
+<p>Ensure the <code>open-cluster-management</code> <em>cluster manager</em> is installed. See <a href="../install-cluster-manager">Install Cluster Manager</a> for more information.</p>
+</li>
+<li>
+<p>Ensure the <code>open-cluster-management</code> <em>klusterlet</em> is installed. See <a href="../register-cluster">Install Klusterlet</a> for more information.</p>
+</li>
+<li>
+<p>Ensure the <code>open-cluster-management</code> <em>application</em> is installed. See <a href="../install-application">Install Application management</a> for more information.</p>
+</li>
+</ul>
 <div class="gdoc-page__anchorwrap"><h2 id="install-from-prebuilt-images-on-quayio">Install from prebuilt images on Quay.io<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-framework/#install-from-prebuilt-images-on-quayio" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from prebuilt images on Quay.io" href="#install-from-prebuilt-images-on-quayio"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Clone the <code>governance-policy-framework</code></p>
+<p>Complete the following steps to install the policy framework from prebuild images on Quay.io:</p>
+<ol>
+<li>
+<p>Clone the <code>governance-policy-framework</code> repository:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/governance-policy-framework.git
-</code></pre></div><p>Deploy the policy framework components to the hub cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Deploy the policy framework components to the hub cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-hub
 <span class="nb">cd</span> governance-policy-framework
 make deploy-policy-framework-hub
-</code></pre></div><p>Above command will deploy following components:</p>
-<ul>
-<li><a href="https://github.com/open-cluster-management/governance-policy-propagator">policy-propagator</a></li>
+</code></pre></div><ul>
+<li>The previous command deploys the <a href="https://github.com/open-cluster-management/governance-policy-propagator">policy-propagator</a>.</li>
 </ul>
-<p>Ensure the pods are running on hub.</p>
+</li>
+<li>
+<p>Ensure the pods are running on hub with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pods -n open-cluster-management 
 NAME                                           READY   STATUS    RESTARTS   AGE
 governance-policy-propagator-8c77f7f5f-kthvh   1/1     Running   <span class="m">0</span>          94s
-</code></pre></div><p>Deploy the policy framework components to the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Deploy the policy framework components to the managed cluster. Run the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
 kubectl config use-context kind-<span class="nv">$MANAGED_CLUSTER_NAME</span>
 make deploy-policy-framework-managed
-</code></pre></div><p>Above command will deploy following components:</p>
+</code></pre></div><ul>
+<li>The previous command deploy following components:
 <ul>
 <li><a href="https://github.com/open-cluster-management/governance-policy-spec-sync">policy-spec-sync</a></li>
 <li><a href="https://github.com/open-cluster-management/governance-policy-status-sync">policy-status-sync</a></li>
 <li><a href="https://github.com/open-cluster-management/governance-policy-template-sync">policy-template-sync</a></li>
 </ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Verify that the pods are running with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pods -n open-cluster-management-agent-addon 
 NAME                                               READY   STATUS    RESTARTS   AGE
 governance-policy-spec-sync-6474b6d898-tmkw6       1/1     Running   <span class="m">0</span>          2m14s
 governance-policy-status-sync-84cbb795df-pgbgt     1/1     Running   <span class="m">0</span>          2m14s
 governance-policy-template-sync-759b9b556f-mx46t   1/1     Running   <span class="m">0</span>          2m14s
-</code></pre></div>
+</code></pre></div></li>
+</ol>
+
 
     </article>
 

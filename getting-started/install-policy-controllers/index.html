@@ -434,16 +434,16 @@
     
 
 
-<p>After policy framework is installed, you could install the policy controllers to the managed clusters.</p>
+<p>After policy framework is installed, you can install the policy controllers to the managed clusters.</p>
 <!-- spellchecker-disable -->
 
 
 
   <div class="gdoc-toc gdoc-toc__level--3"><nav id="TableOfContents"><ul>
         <li><a href="#prerequisite">Prerequisite</a></li>
-        <li><a href="#install-configuration-policy-controller">Install configuration policy controller</a></li>
-        <li><a href="#install-certificate-policy-controller">Install certificate policy controller</a></li>
-        <li><a href="#install-iam-policy-controller">Install IAM policy controller</a></li>
+        <li><a href="#install-the-configuration-policy-controller">Install the configuration policy controller</a></li>
+        <li><a href="#install-the-certificate-policy-controller">Install the certificate policy controller</a></li>
+        <li><a href="#install-the-iam-policy-controller">Install the IAM policy controller</a></li>
         <li><a href="#what-is-next">What is next</a></li>
         <li><a href="#more-policies">More policies</a></li>
       </ul></nav><hr></div>
@@ -451,93 +451,140 @@
 
 <!-- spellchecker-enable -->
 <div class="gdoc-page__anchorwrap"><h2 id="prerequisite">Prerequisite<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#prerequisite" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Prerequisite" href="#prerequisite"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation">kustomize</a> are installed.</p>
-<p>Ensure <a href="https://golang.org/doc/install">golang</a> is installed, if you are planning to install from the source.</p>
-<p>Prepare one Kubernetes cluster to function as the hub. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you will need <a href="https://docs.docker.com/get-started">docker</a> installed and running.</p>
-<p>Ensure the open-cluster-management policy framework is installed. See <a href="../install-policy-framework">Install Policy Framework</a> for more information.</p>
-<div class="gdoc-page__anchorwrap"><h2 id="install-configuration-policy-controller">Install configuration policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-configuration-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install configuration policy controller" href="#install-configuration-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Clone the <code>config-policy-controller</code></p>
+<p>You must meet the following prerequisites to install the policy controllers:</p>
+<ul>
+<li>
+<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl"><code>kubectl</code></a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation"><code>kustomize</code></a> are installed.</p>
+</li>
+<li>
+<p>Ensure <a href="https://golang.org/doc/install">Golang</a> is installed, if you are planning to install from the source.</p>
+</li>
+<li>
+<p>Prepare one Kubernetes cluster to function as the hub cluster. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you must install and run <a href="https://docs.docker.com/get-started">Docker</a>.</p>
+</li>
+<li>
+<p>Ensure the <code>open-cluster-management</code> <em>policy framework</em> is installed. See <a href="install-policy-framework.md">Install Policy Framework</a> for more information.</p>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="install-the-configuration-policy-controller">Install the configuration policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-the-configuration-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install the configuration policy controller" href="#install-the-configuration-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Complete the following procedure to install the configuration policy controller:</p>
+<ol>
+<li>
+<p>Clone the <code>config-policy-controller</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/config-policy-controller.git
-</code></pre></div><p>Deploy the <code>config-policy-controller</code> to the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Deploy the <code>config-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
 kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> config-policy-controller
 make kind-deploy-controller
-</code></pre></div><p>Ensure the pod is running on the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Ensure the pod is running on the managed cluster. Run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pods -n open-cluster-management-agent-addon
-
 NAME                                               READY   STATUS    RESTARTS   AGE
 ...
 config-policy-controller-7f8fb64d8c-pmfx4          1/1     Running   <span class="m">0</span>          44s
 ...
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-certificate-policy-controller">Install certificate policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-certificate-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install certificate policy controller" href="#install-certificate-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Clone the <code>cert-policy-controller</code></p>
+</code></pre></div></li>
+</ol>
+<p>The configuration policy controller is installed.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="install-the-certificate-policy-controller">Install the certificate policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-the-certificate-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install the certificate policy controller" href="#install-the-certificate-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Complete the following steps to install the certificate policy controller:</p>
+<ol>
+<li>
+<p>Clone the <code>cert-policy-controller</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/cert-policy-controller.git
-</code></pre></div><p>Deploy the <code>cert-policy-controller</code> to the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Deploy the <code>cert-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
 kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> cert-policy-controller
 make kind-deploy-controller
-</code></pre></div><p>Ensure the pod is running on the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Ensure the pod is running on the managed cluster. Run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pods -n open-cluster-management-agent-addon
-
 NAME                                    READY   STATUS    RESTARTS   AGE
 ...
 cert-policy-controller-6678fc7c-lw6m9   1/1     Running   <span class="m">0</span>          4m20s
 ...
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-iam-policy-controller">Install IAM policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-iam-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install IAM policy controller" href="#install-iam-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Clone the <code>iam-policy-controller</code></p>
+</code></pre></div></li>
+</ol>
+<p>The certificate policy is installed.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="install-the-iam-policy-controller">Install the IAM policy controller<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#install-the-iam-policy-controller" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install the IAM policy controller" href="#install-the-iam-policy-controller"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Complete the following step to install the IAM policy controller:</p>
+<ol>
+<li>
+<p>Clone the <code>iam-policy-controller</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/iam-policy-controller.git
-</code></pre></div><p>Deploy the <code>iam-policy-controller</code> to the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Deploy the <code>iam-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
 kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> iam-policy-controller
 make kind-deploy-controller
-</code></pre></div><p>Ensure the pod is running on the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Ensure the pod is running on the managed cluster. Run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pods -n open-cluster-management-agent-addon
-
 NAME                                     READY   STATUS    RESTARTS   AGE
 ...
 iam-policy-controller-7c5f746866-v65jb   1/1     Running   <span class="m">0</span>          2m43s
 ...
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="what-is-next">What is next<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#what-is-next" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What is next" href="#what-is-next"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+</code></pre></div></li>
+</ol>
+<p>The IAM policy controller is installed.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="what-is-next">What is next<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#what-is-next" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What is next" href="#what-is-next"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<ol>
+<li>
 <p>After a successful deployment, test the policy framework and configuration policy controller with a sample policy. Run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-hub
-kubectl apply -n default -f https://raw.githubusercontent.com/open-cluster-management/policy-collection/main/stable/CM-Configuration-Management/policy-pod.yaml
-
+   
+kubectl apply -n default -f https://raw.githubusercontent.com/open-cluster-management/policy-collection/main/stable/CM-Configuration- Management/policy-pod.yaml
 policy.policy.open-cluster-management.io/policy-pod created
 placementbinding.policy.open-cluster-management.io/binding-policy-pod created
 placementrule.apps.open-cluster-management.io/placement-policy-pod created
-</code></pre></div><p>Update the PlacementRule to distribute the policy to the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Update the <code>PlacementRule</code> to distribute the policy to the managed cluster with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl patch -n default placementrule.apps.open-cluster-management.io/placement-policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;clusterSelector\&#34;:{\&#34;matchExpressions\&#34;:[]}}}&#34;</span>
-
 placementrule.apps.open-cluster-management.io/placement-policy-pod patched
-</code></pre></div><p>To confirm the managed cluster has been selected by placementrule, run the following command:</p>
+</code></pre></div></li>
+<li>
+<p>To confirm that the managed cluster is selected by <code>PlacementRule</code>, run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get -n default placementrule.apps.open-cluster-management.io/placement-policy-pod -oyaml
-
 ...
 status:
   decisions:
   - clusterName: cluster1
     clusterNamespace: cluster1
 ...
-</code></pre></div><p>Enforce the policy to make configuration policy automatically correct any misconfigurations on the managed cluster.</p>
+</code></pre></div></li>
+<li>
+<p>Enforce the policy to make the configuration policy automatically correct any misconfigurations on the managed cluster:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl patch -n default policy.policy.open-cluster-management.io/policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;remediationAction\&#34;: \&#34;enforce\&#34;}}&#34;</span>
-
 policy.policy.open-cluster-management.io/policy-pod patched
-</code></pre></div><p>After a few seconds, your policy should be propagated to the managed cluster. To confirm, run the following command:</p>
+</code></pre></div></li>
+<li>
+<p>After a few seconds, your policy is propagated to the managed cluster. To confirm, run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
 kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
 kubectl get policy -A
-
 NAMESPACE   NAME                 AGE
 cluster1    default.policy-pod   1m39s
-</code></pre></div><p>The missing pod should be created by the policy on the managed cluster. To confirm, run the following command:</p>
+</code></pre></div></li>
+<li>
+<p>The missing pod is created by the policy on the managed cluster. To confirm, run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get pod -n default
-
 NAME               READY   STATUS    RESTARTS   AGE
 sample-nginx-pod   1/1     Running   <span class="m">0</span>          23s
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="more-policies">More policies<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#more-policies" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor More policies" href="#more-policies"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+</code></pre></div></li>
+</ol>
+<div class="gdoc-page__anchorwrap"><h2 id="more-policies">More policies<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-controllers/#more-policies" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor More policies" href="#more-policies"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>You can find more policies or contribute to the open repository, <a href="https://github.com/open-cluster-management/policy-collection">policy-collection</a>.</p>
 
 
