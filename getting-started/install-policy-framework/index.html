@@ -477,7 +477,7 @@
 </code></pre></div></li>
 <li>
 <p>Deploy the policy framework components to the hub cluster with the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-hub
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
 <span class="nb">cd</span> governance-policy-framework
 make deploy-policy-framework-hub
 </code></pre></div><ul>
@@ -493,7 +493,7 @@ governance-policy-propagator-8c77f7f5f-kthvh   1/1     Running   <span class="m"
 <li>
 <p>Deploy the policy framework components to the managed cluster. Run the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
-kubectl config use-context kind-<span class="nv">$MANAGED_CLUSTER_NAME</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
 make deploy-policy-framework-managed
 </code></pre></div><ul>
 <li>The previous command deploy following components:

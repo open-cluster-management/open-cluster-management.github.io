@@ -460,7 +460,7 @@ kind get kubeconfig --name cluster1 --internal &gt; ~/cluster1-kubeconfig
 <p>If you have not already done so, clone the <code>registration-operator</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/registration-operator
 </code></pre></div><p>Ensure the <code>kubectl</code> context is set to point to the managed cluster:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-cluster1
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-cluster1</span>
 </code></pre></div><p>Deploy agent on a managed <code>kind</code> cluster.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> registration-operator
 <span class="nb">export</span> <span class="nv">KLUSTERLET_KIND_KUBECONFIG</span><span class="o">=</span>~/cluster1-kubeconfig
@@ -470,7 +470,7 @@ make deploy-spoke-kind <span class="c1"># make deploy-spoke-kind GO_REQUIRED_MIN
 <p>If you are using OpenShift or have <code>OLM</code> installed in your cluster, you are able to install the klusterlet with a released version from OperatorHub. Details can be found <a href="https://operatorhub.io/operator/klusterlet">here</a>.</p>
 <div class="gdoc-page__anchorwrap"><h2 id="what-is-next">What is next<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#what-is-next" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What is next" href="#what-is-next"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>After a successful deployment, a <code>certificatesigningrequest</code> and a <code>managedcluster</code> will be created on the hub cluster.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context kind-hub
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
 $ kubectl get csr
 NAME                              AGE   REQUESTOR                       CONDITION
 &lt;managed cluster name&gt;-&lt;suffix&gt;   41s   kubernetes-admin                Pending
@@ -509,7 +509,7 @@ kubectl patch managedcluster <span class="o">{</span>managed cluster name<span c
 </code></pre></div><p>Verify that the <code>manifestwork</code> resource was applied to the hub.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl -n &lt;managed cluster name&gt; get manifestwork/mw-01 -o yaml <span class="c1"># kubectl -n cluster1 get manifestwork/mw-01 -o yaml</span>
 </code></pre></div><p>Check on the managed cluster and see the <em>hello</em> Pod has been deployed from the hub cluster.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context kind-cluster1
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-cluster1</span>
 $ kubectl -n default get pod
 NAME    READY   STATUS    RESTARTS   AGE
 hello   1/1     Running   <span class="m">0</span>          108s

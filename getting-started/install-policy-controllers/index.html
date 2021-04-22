@@ -476,7 +476,7 @@
 <li>
 <p>Deploy the <code>config-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> config-policy-controller
 make kind-deploy-controller
 </code></pre></div></li>
@@ -500,7 +500,7 @@ config-policy-controller-7f8fb64d8c-pmfx4          1/1     Running   <span class
 <li>
 <p>Deploy the <code>cert-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> cert-policy-controller
 make kind-deploy-controller
 </code></pre></div></li>
@@ -524,7 +524,7 @@ cert-policy-controller-6678fc7c-lw6m9   1/1     Running   <span class="m">0</spa
 <li>
 <p>Deploy the <code>iam-policy-controller</code> to the managed cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
 <span class="nb">cd</span> iam-policy-controller
 make kind-deploy-controller
 </code></pre></div></li>
@@ -542,7 +542,7 @@ iam-policy-controller-7c5f746866-v65jb   1/1     Running   <span class="m">0</sp
 <ol>
 <li>
 <p>After a successful deployment, test the policy framework and configuration policy controller with a sample policy. Run the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-hub
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
    
 kubectl apply -n default -f https://raw.githubusercontent.com/open-cluster-management/policy-collection/main/stable/CM-Configuration- Management/policy-pod.yaml
 policy.policy.open-cluster-management.io/policy-pod created
@@ -572,7 +572,7 @@ policy.policy.open-cluster-management.io/policy-pod patched
 <li>
 <p>After a few seconds, your policy is propagated to the managed cluster. To confirm, run the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context kind-<span class="nv">$WATCH_NAMESPACE</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
 kubectl get policy -A
 NAMESPACE   NAME                 AGE
 cluster1    default.policy-pod   1m39s

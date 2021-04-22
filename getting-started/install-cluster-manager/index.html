@@ -461,7 +461,7 @@ kind get kubeconfig --name hub --internal &gt; ~/hub-kubeconfig
 <p>Clone the <code>registration-operator</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/registration-operator
 </code></pre></div><p>Ensure the <code>kubectl</code> context is set to point to the hub cluster:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context kind-hub
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
 </code></pre></div><p>Deploy hub</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">cd</span> registration-operator
 make deploy-hub <span class="c1"># make deploy-hub GO_REQUIRED_MIN_VERSION:= # if you see warnings regarding go version</span>
