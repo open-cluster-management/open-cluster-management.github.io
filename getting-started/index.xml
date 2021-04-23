@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Install Cluster Lifecycle</title>
+      <link>http://open-cluster-management.github.io/getting-started/install-cluster-lifecycle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/install-cluster-lifecycle/</guid>
+      <description>Cluster Lifecycle has the following component:
+ managedcluster-import-controller: A controller that generates an import command. It also manages the Klusterlet on a managed cluster.     Prerequisite Install managedcluster-import-controller from the source files Next steps  Auto register a Hive-created cluster Manually register a cluster       Prerequisite You must meet the following prerequisites to use the cluster lifecycle:
+  Ensure kubectl and kustomize are installed.</description>
+    </item>
+    
+    <item>
       <title>Install Cluster Manager</title>
       <link>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,9 +40,8 @@ Prepare one Kubernetes cluster to function as the hub. For example, use kind to 
       
       <guid>http://open-cluster-management.github.io/getting-started/register-cluster/</guid>
       <description>After the cluster manager is installed on the hub cluster, you need to install the klusterlet agent on another cluster so that it can be registered and managed by the hub cluster.
-   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
-Ensure golang is installed, if you are planning to install from the source.
-Ensure the open-cluster-management cluster manager is installed on the hub cluster.</description>
+   Prerequisite Install with Cluster Lifecycle Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.</description>
     </item>
     
     <item>

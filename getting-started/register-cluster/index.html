@@ -126,6 +126,21 @@
             <li>
             
                 <span class="flex">
+                    <a href="/getting-started/install-cluster-lifecycle/" class="gdoc-nav__entry ">
+                        Install Cluster Lifecycle
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+            
+            <li>
+            
+                <span class="flex">
                     <a href="/getting-started/install-cluster-manager/" class="gdoc-nav__entry ">
                         Install Cluster Manager
                     </a>
@@ -441,6 +456,7 @@
 
   <div class="gdoc-toc gdoc-toc__level--3"><nav id="TableOfContents"><ul>
         <li><a href="#prerequisite">Prerequisite</a></li>
+        <li><a href="#install-with-cluster-lifecycle">Install with Cluster Lifecycle</a></li>
         <li><a href="#install-from-source">Install from source</a></li>
         <li><a href="#install-from-operatorhub">Install from OperatorHub</a></li>
         <li><a href="#what-is-next">What is next</a></li>
@@ -456,7 +472,9 @@
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="c1"># kind delete cluster --name cluster1 # if the kind cluster is previously created and can be safely deleted</span>
 kind create cluster --name cluster1
 kind get kubeconfig --name cluster1 --internal &gt; ~/cluster1-kubeconfig
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-from-source">Install from source<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#install-from-source" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from source" href="#install-from-source"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="install-with-cluster-lifecycle">Install with Cluster Lifecycle<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#install-with-cluster-lifecycle" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install with Cluster Lifecycle" href="#install-with-cluster-lifecycle"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>If you have installed <a href="../install-cluster-lifecycle">Cluster Lifecycle</a>, you can follow the instructions from the section, <a href="../install-cluster-lifecycle#manually-register-a-cluster">Manually register a cluster</a>.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="install-from-source">Install from source<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/register-cluster/#install-from-source" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from source" href="#install-from-source"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>If you have not already done so, clone the <code>registration-operator</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/registration-operator
 </code></pre></div><p>Ensure the <code>kubectl</code> context is set to point to the managed cluster:</p>
