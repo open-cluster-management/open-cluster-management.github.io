@@ -507,7 +507,7 @@
 </code></pre></div></li>
 <li>
 <p>Verify <code>managedcluster-import-controller</code> is running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get po -n open-cluster-management <span class="p">|</span> grep managedcluster-import-controller   
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get po -n open-cluster-management <span class="p">|</span> grep managedcluster-import-controller   
 managedcluster-import-controller-686b9dff46-flk9d   1/1     Running   <span class="m">0</span>          6m47s
 </code></pre></div></li>
 </ol>
@@ -516,18 +516,18 @@ managedcluster-import-controller-686b9dff46-flk9d   1/1     Running   <span clas
 <ol>
 <li>
 <p>If you created a OKD/Openshift cluster using <a href="https://github.com/openshift/hive/blob/master/docs/using-hive.md#using-hive">Hive</a>, you can auto-import the cluster by simply creating a managedcluster resource:</p>
-<pre><code>apiVersion: cluster.open-cluster-management.io/v1
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apiVersion: cluster.open-cluster-management.io/v1
 kind: ManagedCluster
 metadata:
   name: CLUSTER_NAME
 spec:
-  hubAcceptsClient: true
-</code></pre><p>Replace the <code>CLUSTER_NAME</code> with the cluster name that you are using.</p>
+  hubAcceptsClient: <span class="nb">true</span>
+</code></pre></div><p>Replace the <code>CLUSTER_NAME</code> with the cluster name that you are using.</p>
 <p><strong>Note</strong>: <code>CLUSTER_NAME</code> should be same as both the <code>ClusterDeployment</code> resource name and the <code>ClusterDeployment</code> namespace name.</p>
 </li>
 <li>
 <p>Verify that the cluster is available on the <em>cluster manager</em>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get managedcluster                                                                                                    
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get managedcluster                                                                                                    
 NAME        HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 hive-test   <span class="nb">true</span>                                  True     True        10m
 
@@ -537,13 +537,13 @@ hive-test   <span class="nb">true</span>                                  True  
 <ol>
 <li>
 <p>Create a managedcluster resource:</p>
-<pre><code>apiVersion: cluster.open-cluster-management.io/v1
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apiVersion: cluster.open-cluster-management.io/v1
 kind: ManagedCluster
 metadata:
   name: CLUSTER_NAME
 spec:
-  hubAcceptsClient: true
-</code></pre><p>Replace the <code>CLUSTER_NAME</code> with the name you want.</p>
+  hubAcceptsClient: <span class="nb">true</span>
+</code></pre></div><p>Replace the <code>CLUSTER_NAME</code> with the name you want.</p>
 </li>
 <li>
 <p>Once the managedcluster resource is created, a namespace with <code>CLUSTER_NAME</code> will be created, and managedcluster-import-controller will generate the <code>yaml</code> files that you can apply on your managed cluster.</p>
@@ -560,7 +560,7 @@ kubectl apply -f import.yaml
 </code></pre></div></li>
 <li>
 <p>Verify that the cluster is available on the <em>cluster manager</em>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get managedcluster                                                                                                    
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get managedcluster                                                                                                    
 NAME        HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
 test-name   <span class="nb">true</span>                                  True     True        21m
 </code></pre></div></li>
@@ -597,19 +597,7 @@ test-name   <span class="nb">true</span>                                  True  
 
         <footer class="gdoc-footer">
     <div class="container flex flex-wrap">
-        <span class="gdoc-footer__item">
-            Built with <a href="https://gohugo.io/" class="gdoc-footer__link">Hugo</a> and
-            <svg class="icon heart"><use xlink:href="#heart"></use></svg>
-        </span>
         
-        <span class="gdoc-footer__item">
-            <a href="https://blog.example.com/legal" class="gdoc-footer__link">Legal Notice</a>
-        </span>
-        
-        
-        <span class="gdoc-footer__item">
-            <a href="/privacy" class="gdoc-footer__link">Privacy Policy</a>
-        </span>
         
     </div>
 </footer>
