@@ -496,7 +496,7 @@
 <p>Deploy the policy framework components to the hub cluster with the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
 <span class="nb">cd</span> governance-policy-framework
-make deploy-policy-framework-hub
+make deploy-community-policy-framework-hub
 </code></pre></div><ul>
 <li>The previous command deploys the <a href="https://github.com/open-cluster-management/governance-policy-propagator">policy-propagator</a>.</li>
 </ul>
@@ -508,10 +508,19 @@ NAME                                           READY   STATUS    RESTARTS   AGE
 governance-policy-propagator-8c77f7f5f-kthvh   1/1     Running   <span class="m">0</span>          94s
 </code></pre></div></li>
 <li>
+<p>Export the hub cluster <code>kubeconfig</code> with the following command:</p>
+<p>For <code>kind</code> cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kind get kubeconfig --name &lt;cluster name&gt; --internal &gt; <span class="k">$(</span>PWD<span class="k">)</span>/kubeconfig_hub
+</code></pre></div><p>For non-<code>kind</code> clusters:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config view --context<span class="o">=</span>&lt;hub cluster context&gt; --minify --flatten &gt; <span class="nv">$PWD</span>/kubeconfig_hub
+</code></pre></div></li>
+<li>
 <p>Deploy the policy framework components to the managed cluster. Run the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
 kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
-make deploy-policy-framework-managed
+kubectl create ns open-cluster-management-agent-addon
+kubectl -n open-cluster-management-agent-addon create secret generic hub-kubeconfig --from-file<span class="o">=</span><span class="nv">kubeconfig</span><span class="o">=</span><span class="nv">$PWD</span>/kubeconfig_hub
+make deploy-community-policy-framework-managed
 </code></pre></div><ul>
 <li>The previous command deploy following components:
 <ul>

@@ -492,10 +492,10 @@
 </code></pre></div></li>
 <li>
 <p>Deploy the <code>config-policy-controller</code> to the managed cluster with the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
 <span class="nb">cd</span> config-policy-controller
-make kind-deploy-controller
+make deploy-controller
 </code></pre></div></li>
 <li>
 <p>Ensure the pod is running on the managed cluster. Run the following command:</p>
@@ -516,10 +516,10 @@ config-policy-controller-7f8fb64d8c-pmfx4          1/1     Running   <span class
 </code></pre></div></li>
 <li>
 <p>Deploy the <code>cert-policy-controller</code> to the managed cluster with the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
 <span class="nb">cd</span> cert-policy-controller
-make kind-deploy-controller
+make deploy-controller
 </code></pre></div></li>
 <li>
 <p>Ensure the pod is running on the managed cluster. Run the following command:</p>
@@ -540,10 +540,10 @@ cert-policy-controller-6678fc7c-lw6m9   1/1     Running   <span class="m">0</spa
 </code></pre></div></li>
 <li>
 <p>Deploy the <code>iam-policy-controller</code> to the managed cluster with the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
+kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
 <span class="nb">cd</span> iam-policy-controller
-make kind-deploy-controller
+make deploy-controller
 </code></pre></div></li>
 <li>
 <p>Ensure the pod is running on the managed cluster. Run the following command:</p>
@@ -559,16 +559,15 @@ iam-policy-controller-7c5f746866-v65jb   1/1     Running   <span class="m">0</sp
 <ol>
 <li>
 <p>After a successful deployment, test the policy framework and configuration policy controller with a sample policy. Run the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
-   
-kubectl apply -n default -f https://raw.githubusercontent.com/open-cluster-management/policy-collection/main/stable/CM-Configuration-Management/policy-pod.yaml
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
+$ kubectl apply -n default -f https://raw.githubusercontent.com/open-cluster-management/policy-collection/main/stable/CM-Configuration-Management/policy-pod.yaml
 policy.policy.open-cluster-management.io/policy-pod created
 placementbinding.policy.open-cluster-management.io/binding-policy-pod created
 placementrule.apps.open-cluster-management.io/placement-policy-pod created
 </code></pre></div></li>
 <li>
 <p>Update the <code>PlacementRule</code> to distribute the policy to the managed cluster with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl patch -n default placementrule.apps.open-cluster-management.io/placement-policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;clusterSelector\&#34;:{\&#34;matchExpressions\&#34;:[]}}}&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl patch -n default placementrule.apps.open-cluster-management.io/placement-policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;clusterSelector\&#34;:{\&#34;matchExpressions\&#34;:[]}}}&#34;</span>
 placementrule.apps.open-cluster-management.io/placement-policy-pod patched
 </code></pre></div></li>
 <li>
@@ -583,13 +582,13 @@ status:
 </code></pre></div></li>
 <li>
 <p>Enforce the policy to make the configuration policy automatically correct any misconfigurations on the managed cluster:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl patch -n default policy.policy.open-cluster-management.io/policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;remediationAction\&#34;: \&#34;enforce\&#34;}}&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl patch -n default policy.policy.open-cluster-management.io/policy-pod --type<span class="o">=</span>merge -p <span class="s2">&#34;{\&#34;spec\&#34;:{\&#34;remediationAction\&#34;: \&#34;enforce\&#34;}}&#34;</span>
 policy.policy.open-cluster-management.io/policy-pod patched
 </code></pre></div></li>
 <li>
 <p>After a few seconds, your policy is propagated to the managed cluster. To confirm, run the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ <span class="nb">export</span> <span class="nv">WATCH_NAMESPACE</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export WATCH_NAMESPACE=cluster1</span>
-$ kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$WATCH_NAMESPACE</span>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ <span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
+$ kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
 $ kubectl get policy -A
 NAMESPACE   NAME                 AGE
 cluster1    default.policy-pod   1m39s
