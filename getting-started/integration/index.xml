@@ -61,7 +61,7 @@ git clone https://github.com/open-cluster-management/discovery.git </description
       
       <guid>http://open-cluster-management.github.io/getting-started/integration/app-lifecycle/</guid>
       <description>After the cluster manager is installed, you could install the application management components to the hub cluster.
-   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite You must meet the following prerequisites to install the application lifecycle management add-on:
+   Prerequisite Install from source Install community operator from OperatorHub.io What is next     Prerequisite You must meet the following prerequisites to install the application lifecycle management add-on:
   Ensure kubectl and kustomize are installed.
   Ensure golang is installed, if you are planning to install from the source.</description>
     </item>
