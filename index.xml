@@ -57,11 +57,11 @@ Work in progress</description>
     </item>
     
     <item>
-      <title>Install Cluster Manager</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</link>
+      <title>Cluster manager</title>
+      <link>http://open-cluster-management.github.io/getting-started/core/cluster-manager/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</guid>
+      <guid>http://open-cluster-management.github.io/getting-started/core/cluster-manager/</guid>
       <description>The are two ways to install the core control plane of open cluster management that includes cluster registration and manifests distribution.
    Prerequisite Install from source Install from OperatorHub     Prerequisite Ensure kubectl and kustomize are installed.
 Ensure golang is installed, if you are planning to install from the source.
@@ -69,66 +69,11 @@ Prepare one Kubernetes cluster to function as the hub. For example, use kind to 
     </item>
     
     <item>
-      <title>Install Klusterlet</title>
-      <link>http://open-cluster-management.github.io/getting-started/register-cluster/</link>
+      <title>Policy framework</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/policy-framework/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://open-cluster-management.github.io/getting-started/register-cluster/</guid>
-      <description>After the cluster manager is installed on the hub cluster, you need to install the klusterlet agent on another cluster so that it can be registered and managed by the hub cluster.
-   Prerequisite Install with Cluster Lifecycle Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
-Ensure golang is installed, if you are planning to install from the source.</description>
-    </item>
-    
-    <item>
-      <title>Install Cluster Lifecycle</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-cluster-lifecycle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/getting-started/install-cluster-lifecycle/</guid>
-      <description>Cluster Lifecycle has the following component:
- managedcluster-import-controller: A controller that generates an import command. It also manages the Klusterlet on a managed cluster.     Prerequisite Install managedcluster-import-controller from the source files Next steps  Auto register a Hive-created cluster Manually register a cluster       Prerequisite You must meet the following prerequisites to use the cluster lifecycle:
-  Ensure kubectl and kustomize are installed.</description>
-    </item>
-    
-    <item>
-      <title>Install Application management</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-application/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/getting-started/install-application/</guid>
-      <description>After the cluster manager is installed, you could install the application management components to the hub cluster.
-   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
-Ensure golang is installed, if you are planning to install from the source.
-Ensure the open-cluster-management cluster manager is installed. See Install Cluster Manager for more information.
-Install from source Clone the multicloud-operators-subscription</description>
-    </item>
-    
-    <item>
-      <title>Install Discovery</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-discovery/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/getting-started/install-discovery/</guid>
-      <description>After the hub is installed, the discovery component can be installed to help discover available clusters.
-   Install from source     Install from source To build, run, and sample the discovery operator, clone the repository below and follow the instructions within the README.
-git clone https://github.com/open-cluster-management/discovery.git </description>
-    </item>
-    
-    <item>
-      <title>Install MultiClusterHub Operator</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-multiclusterhub-operator/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/getting-started/install-multiclusterhub-operator/</guid>
-      <description>Install from source To build and install the MultiClusterHub Operator as a standalone component, follow the CONTRIBUTING guide referenced in the source README.</description>
-    </item>
-    
-    <item>
-      <title>Install Policy Framework</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-policy-framework/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://open-cluster-management.github.io/getting-started/install-policy-framework/</guid>
+      <guid>http://open-cluster-management.github.io/getting-started/integration/policy-framework/</guid>
       <description>After the cluster manager and klusterlet are installed, you can install the policy framework components to the hub and the managed clusters.
    Prerequisite Install from prebuilt images on Quay.io     Prerequisite You must meet the following prerequisites to install the policy framework:
   Ensure kubectl and kustomize are installed.
@@ -136,15 +81,70 @@ git clone https://github.com/open-cluster-management/discovery.git </description
     </item>
     
     <item>
-      <title>Install Policy Controllers</title>
-      <link>http://open-cluster-management.github.io/getting-started/install-policy-controllers/</link>
+      <title>Klusterlet agent</title>
+      <link>http://open-cluster-management.github.io/getting-started/core/register-cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://open-cluster-management.github.io/getting-started/install-policy-controllers/</guid>
+      <guid>http://open-cluster-management.github.io/getting-started/core/register-cluster/</guid>
+      <description>After the cluster manager is installed on the hub cluster, you need to install the klusterlet agent on another cluster so that it can be registered and managed by the hub cluster.
+   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite Ensure kubectl and kustomize are installed.
+Ensure golang is installed, if you are planning to install from the source.
+Ensure the open-cluster-management cluster manager is installed on the hub cluster.</description>
+    </item>
+    
+    <item>
+      <title>Policy controllers</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/policy-controllers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/integration/policy-controllers/</guid>
       <description>After policy framework is installed, you can install the policy controllers to the managed clusters.
    Prerequisite Install the configuration policy controller Install the certificate policy controller Install the IAM policy controller What is next More policies     Prerequisite You must meet the following prerequisites to install the policy controllers:
   Ensure kubectl and kustomize are installed.
   Ensure Golang is installed, if you are planning to install from the source.</description>
+    </item>
+    
+    <item>
+      <title>Install Discovery</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/discover/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/integration/discover/</guid>
+      <description>After the hub is installed, the discovery component can be installed to help discover available clusters.
+   Install from source     Install from source To build, run, and sample the discovery operator, clone the repository below and follow the instructions within the README.
+git clone https://github.com/open-cluster-management/discovery.git </description>
+    </item>
+    
+    <item>
+      <title>Install MultiClusterHub Operator</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/multiclusterhub-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/integration/multiclusterhub-operator/</guid>
+      <description>Install from source To build and install the MultiClusterHub Operator as a standalone component, follow the CONTRIBUTING guide referenced in the source README.</description>
+    </item>
+    
+    <item>
+      <title>Application lifecycle management</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/app-lifecycle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/integration/app-lifecycle/</guid>
+      <description>After the cluster manager is installed, you could install the application management components to the hub cluster.
+   Prerequisite Install from source Install from OperatorHub What is next     Prerequisite You must meet the following prerequisites to install the application lifecycle management add-on:
+  Ensure kubectl and kustomize are installed.
+  Ensure golang is installed, if you are planning to install from the source.</description>
+    </item>
+    
+    <item>
+      <title>Cluster lifecycle management</title>
+      <link>http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/</guid>
+      <description>Cluster Lifecycle Management has the following component:
+ managedcluster-import-controller: A controller that generates an import command. It also manages the Klusterlet on a managed cluster.     Prerequisite Install managedcluster-import-controller from the source files Next steps  Auto register a Hive-created cluster Manually register a cluster       Prerequisite You must meet the following prerequisites to use the cluster lifecycle:
+  Ensure kubectl and kustomize are installed.</description>
     </item>
     
   </channel>

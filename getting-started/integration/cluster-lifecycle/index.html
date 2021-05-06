@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Roadmap">
+<meta name="description" content="Cluster lifecycle management">
 
-<title>Roadmap | Open Cluster Management</title>
+<title>Cluster lifecycle management | Open Cluster Management</title>
 
 <link rel="icon" href="/favicon/favicon-32x32.png" type="image/x-icon">
 <link rel="stylesheet" href="/main.min.css" media="screen">
@@ -88,7 +88,7 @@
             <li>
             
                 <span class="flex">
-                    <a href="/concepts/roadmap/" class="gdoc-nav__entry is-active">
+                    <a href="/concepts/roadmap/" class="gdoc-nav__entry ">
                         Roadmap
                     </a>
                 </span>
@@ -260,7 +260,7 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/integration/cluster-lifecycle/" class="gdoc-nav__entry ">
+                    <a href="/getting-started/integration/cluster-lifecycle/" class="gdoc-nav__entry is-active">
                         Cluster lifecycle management
                     </a>
                 </span>
@@ -486,7 +486,7 @@
     <span>
         
             <svg class="icon code"><use xlink:href="#code"></use></svg>
-            <a href="https://github.com/open-cluster-management/website/edit/main/content/concepts/roadmap.md">
+            <a href="https://github.com/open-cluster-management/website/edit/main/content/getting-started/integration/cluster-lifecycle.md">
                 Edit this page
             </a>
         
@@ -495,7 +495,7 @@
 
 
     <article class="gdoc-markdown">
-        <h1>Roadmap</h1>
+        <h1>Cluster lifecycle management</h1>
         
 
 
@@ -503,8 +503,122 @@
     
 
 
-<p>This page tells you the roadmap for components in open-cluster-management.</p>
-<p>Work in progress</p>
+<p>Cluster Lifecycle Management has the following component:</p>
+<ul>
+<li>managedcluster-import-controller: A controller that generates an import command. It also manages the Klusterlet on a managed cluster.</li>
+</ul>
+<!-- spellchecker-disable -->
+
+
+
+  <div class="gdoc-toc gdoc-toc__level--3"><nav id="TableOfContents"><ul>
+        <li><a href="#prerequisite">Prerequisite</a></li>
+        <li><a href="#install-managedcluster-import-controller-from-the-source-files">Install managedcluster-import-controller from the source files</a></li>
+        <li><a href="#next-steps">Next steps</a>
+          <ul>
+            <li><a href="#auto-register-a-hive-created-cluster">Auto register a Hive-created cluster</a></li>
+            <li><a href="#manually-register-a-cluster">Manually register a cluster</a></li>
+          </ul>
+        </li>
+      </ul></nav><hr></div>
+
+
+<!-- spellchecker-enable -->
+<div class="gdoc-page__anchorwrap"><h2 id="prerequisite">Prerequisite<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/#prerequisite" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Prerequisite" href="#prerequisite"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>You must meet the following prerequisites to use the cluster lifecycle:</p>
+<ul>
+<li>
+<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation">kustomize</a> are installed.</p>
+</li>
+<li>
+<p>Prepare one <a href="https://www.okd.io">OKD</a> cluster to function as the <em>hub</em> cluster.</p>
+</li>
+<li>
+<p>Install the cluster manager on the <em>hub</em> cluster. See <a href="/getting-started/core/cluster-manager">Cluster Manager</a> for more information.</p>
+</li>
+<li>
+<p>Install <a href="https://github.com/openshift/hive/blob/master/docs/install.md#installing-community-release-via-operatorhub">Hive</a> on the <em>hub</em>.</p>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="install-managedcluster-import-controller-from-the-source-files">Install managedcluster-import-controller from the source files<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/#install-managedcluster-import-controller-from-the-source-files" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install managedcluster-import-controller from the source files" href="#install-managedcluster-import-controller-from-the-source-files"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<ol>
+<li>
+<p>Clone the <code>managedcluster-import-controller</code> repo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/managedcluster-import-controller.git
+<span class="nb">cd</span> managedcluster-import-controller
+</code></pre></div></li>
+<li>
+<p>Ensure the <code>kubectl</code> context is set to point to the <em>cluster manager</em> cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl cluster-info
+</code></pre></div></li>
+<li>
+<p>Create the <code>open-cluster-management</code> namespace on the <em>cluster manager</em> if you haven&rsquo;t already created it:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl create ns open-cluster-management
+</code></pre></div></li>
+<li>
+<p>Deploy <code>managedcluster-import-controller</code> in the <code>open-cluster-management</code> namespace:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl apply -k overlays/community
+</code></pre></div></li>
+<li>
+<p>Verify <code>managedcluster-import-controller</code> is running:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get po -n open-cluster-management <span class="p">|</span> grep managedcluster-import-controller   
+managedcluster-import-controller-686b9dff46-flk9d   1/1     Running   <span class="m">0</span>          6m47s
+</code></pre></div></li>
+</ol>
+<div class="gdoc-page__anchorwrap"><h2 id="next-steps">Next steps<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/#next-steps" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Next steps" href="#next-steps"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<div class="gdoc-page__anchorwrap"><h3 id="auto-register-a-hive-created-cluster">Auto register a Hive-created cluster<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/#auto-register-a-hive-created-cluster" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Auto register a Hive-created cluster" href="#auto-register-a-hive-created-cluster"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<ol>
+<li>
+<p>If you created a OKD/Openshift cluster using <a href="https://github.com/openshift/hive/blob/master/docs/using-hive.md#using-hive">Hive</a>, you can auto-import the cluster by simply creating a managedcluster resource:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: CLUSTER_NAME
+spec:
+  hubAcceptsClient: <span class="nb">true</span>
+</code></pre></div><p>Replace the <code>CLUSTER_NAME</code> with the cluster name that you are using.</p>
+<p><strong>Note</strong>: <code>CLUSTER_NAME</code> should be same as both the <code>ClusterDeployment</code> resource name and the <code>ClusterDeployment</code> namespace name.</p>
+</li>
+<li>
+<p>Verify that the cluster is available on the <em>cluster manager</em>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get managedcluster                                                                                                    
+NAME        HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
+hive-test   <span class="nb">true</span>                                  True     True        10m
+
+</code></pre></div></li>
+</ol>
+<div class="gdoc-page__anchorwrap"><h3 id="manually-register-a-cluster">Manually register a cluster<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/#manually-register-a-cluster" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Manually register a cluster" href="#manually-register-a-cluster"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<ol>
+<li>
+<p>Create a managedcluster resource:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: CLUSTER_NAME
+spec:
+  hubAcceptsClient: <span class="nb">true</span>
+</code></pre></div><p>Replace the <code>CLUSTER_NAME</code> with the name you want.</p>
+</li>
+<li>
+<p>Once the managedcluster resource is created, a namespace with <code>CLUSTER_NAME</code> will be created, and managedcluster-import-controller will generate the <code>yaml</code> files that you can apply on your managed cluster.</p>
+</li>
+<li>
+<p>On the <em>cluster manager</em>, run the following commands to get two <code>yaml</code> files:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl get secret -n <span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span> <span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-import -ojsonpath<span class="o">=</span><span class="s1">&#39;{.data.crds\.yaml}&#39;</span> <span class="p">|</span> base64 --decode &gt; crds.yaml
+kubectl get secret -n <span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span> <span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-import -ojsonpath<span class="o">=</span><span class="s1">&#39;{.data.import\.yaml}&#39;</span> <span class="p">|</span> base64 --decode &gt; import.yaml
+</code></pre></div></li>
+<li>
+<p>On the <em>managed cluster</em>, apply the <code>yaml</code> files:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl apply -f crds.yaml
+kubectl apply -f import.yaml
+</code></pre></div></li>
+<li>
+<p>Verify that the cluster is available on the <em>cluster manager</em>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get managedcluster                                                                                                    
+NAME        HUB ACCEPTED   MANAGED CLUSTER URLS   JOINED   AVAILABLE   AGE
+test-name   <span class="nb">true</span>                                  True     True        21m
+</code></pre></div></li>
+</ol>
 
 
     </article>

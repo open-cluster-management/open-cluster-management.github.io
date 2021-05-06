@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Install Policy Framework">
+<meta name="description" content="Install Discovery">
 
-<title>Install Policy Framework | Open Cluster Management</title>
+<title>Install Discovery | Open Cluster Management</title>
 
 <link rel="icon" href="/favicon/favicon-32x32.png" type="image/x-icon">
 <link rel="stylesheet" href="/main.min.css" media="screen">
@@ -126,8 +126,26 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-cluster-manager/" class="gdoc-nav__entry ">
-                        Install Cluster Manager
+                    <a href="/getting-started/core/" class="gdoc-nav__entry ">
+                        Core Components
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/core/cluster-manager/" class="gdoc-nav__entry ">
+                        Cluster manager
                     </a>
                 </span>
             
@@ -143,8 +161,50 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/register-cluster/" class="gdoc-nav__entry ">
-                        Install Klusterlet
+                    <a href="/getting-started/core/register-cluster/" class="gdoc-nav__entry ">
+                        Klusterlet agent
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/" class="gdoc-nav__entry ">
+                        Addons and Integrations
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/policy-framework/" class="gdoc-nav__entry ">
+                        Policy framework
                     </a>
                 </span>
             
@@ -160,8 +220,31 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-cluster-lifecycle/" class="gdoc-nav__entry ">
-                        Install Cluster Lifecycle
+                    <a href="/getting-started/integration/policy-controllers/" class="gdoc-nav__entry ">
+                        Policy controllers
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/app-lifecycle/" class="gdoc-nav__entry ">
+                        Application lifecycle management
                     </a>
                 </span>
             
@@ -177,29 +260,8 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-application/" class="gdoc-nav__entry ">
-                        Install Application management
-                    </a>
-                </span>
-            
-
-            
-            
-            </li>
-            
-            
-            
-            
-            
-            
-        
-            
-            
-            <li>
-            
-                <span class="flex">
-                    <a href="/getting-started/install-policy-framework/" class="gdoc-nav__entry is-active">
-                        Install Policy Framework
+                    <a href="/getting-started/integration/cluster-lifecycle/" class="gdoc-nav__entry ">
+                        Cluster lifecycle management
                     </a>
                 </span>
             
@@ -210,18 +272,8 @@
             
             
         
-            
-            
-            <li>
-            
-                <span class="flex">
-                    <a href="/getting-started/install-policy-controllers/" class="gdoc-nav__entry ">
-                        Install Policy Controllers
-                    </a>
-                </span>
-            
+    </ul>
 
-            
             
             </li>
             
@@ -434,7 +486,7 @@
     <span>
         
             <svg class="icon code"><use xlink:href="#code"></use></svg>
-            <a href="https://github.com/open-cluster-management/website/edit/main/content/getting-started/install-policy-framework.md">
+            <a href="https://github.com/open-cluster-management/website/edit/main/content/getting-started/integration/discover.md">
                 Edit this page
             </a>
         
@@ -443,7 +495,7 @@
 
 
     <article class="gdoc-markdown">
-        <h1>Install Policy Framework</h1>
+        <h1>Install Discovery</h1>
         
 
 
@@ -451,96 +503,21 @@
     
 
 
-<p>After the cluster manager and klusterlet are installed, you can install the policy framework components to the hub and the managed clusters.</p>
+<p>After the hub is installed, the discovery component can be installed to help discover available clusters.</p>
 <!-- spellchecker-disable -->
 
 
 
   <div class="gdoc-toc gdoc-toc__level--3"><nav id="TableOfContents"><ul>
-        <li><a href="#prerequisite">Prerequisite</a></li>
-        <li><a href="#install-from-prebuilt-images-on-quayio">Install from prebuilt images on Quay.io</a></li>
+        <li><a href="#install-from-source">Install from source</a></li>
       </ul></nav><hr></div>
 
 
 <!-- spellchecker-enable -->
-<div class="gdoc-page__anchorwrap"><h2 id="prerequisite">Prerequisite<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-framework/#prerequisite" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Prerequisite" href="#prerequisite"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>You must meet the following prerequisites to install the policy framework:</p>
-<ul>
-<li>
-<p>Ensure <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl"><code>kubectl</code></a> and <a href="https://kubernetes-sigs.github.io/kustomize/installation"><code>kustomize</code></a> are installed.</p>
-</li>
-<li>
-<p>Ensure <a href="https://golang.org/doc/install">Golang</a> is installed, if you are planning to install from the source.</p>
-</li>
-<li>
-<p>Prepare one Kubernetes cluster to function as the hub cluster. For example, use <a href="https://kind.sigs.k8s.io/docs/user/quick-start">kind</a> to create a hub cluster. To use kind, you must install and run <a href="https://docs.docker.com/get-started">Docker</a>.</p>
-</li>
-<li>
-<p>Ensure the <code>open-cluster-management</code> <em>cluster manager</em> is installed. See <a href="../install-cluster-manager">Install Cluster Manager</a> for more information.</p>
-</li>
-<li>
-<p>Ensure the <code>open-cluster-management</code> <em>klusterlet</em> is installed. See <a href="../register-cluster">Install Klusterlet</a> for more information.</p>
-</li>
-<li>
-<p>Ensure the <code>open-cluster-management</code> <em>application</em> is installed. See <a href="../install-application">Install Application management</a> for more information.</p>
-</li>
-</ul>
-<div class="gdoc-page__anchorwrap"><h2 id="install-from-prebuilt-images-on-quayio">Install from prebuilt images on Quay.io<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-policy-framework/#install-from-prebuilt-images-on-quayio" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from prebuilt images on Quay.io" href="#install-from-prebuilt-images-on-quayio"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>Complete the following steps to install the policy framework from prebuild images on Quay.io:</p>
-<ol>
-<li>
-<p>Clone the <code>governance-policy-framework</code> repository:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/governance-policy-framework.git
-</code></pre></div></li>
-<li>
-<p>Deploy the policy framework components to the hub cluster with the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config use-context &lt;hub cluster context&gt; <span class="c1"># kubectl config use-context kind-hub</span>
-<span class="nb">cd</span> governance-policy-framework
-make deploy-community-policy-framework-hub
-</code></pre></div><ul>
-<li>The previous command deploys the <a href="https://github.com/open-cluster-management/governance-policy-propagator">policy-propagator</a>.</li>
-</ul>
-</li>
-<li>
-<p>Ensure the pods are running on hub with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get pods -n open-cluster-management 
-NAME                                           READY   STATUS    RESTARTS   AGE
-governance-policy-propagator-8c77f7f5f-kthvh   1/1     Running   <span class="m">0</span>          94s
-</code></pre></div></li>
-<li>
-<p>Export the hub cluster <code>kubeconfig</code> with the following command:</p>
-<p>For <code>kind</code> cluster:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kind get kubeconfig --name &lt;cluster name&gt; --internal &gt; <span class="k">$(</span>PWD<span class="k">)</span>/kubeconfig_hub
-</code></pre></div><p>For non-<code>kind</code> clusters:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">kubectl config view --context<span class="o">=</span>&lt;hub cluster context&gt; --minify --flatten &gt; <span class="nv">$PWD</span>/kubeconfig_hub
-</code></pre></div></li>
-<li>
-<p>Deploy the policy framework components to the managed cluster. Run the following commands:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell"><span class="nb">export</span> <span class="nv">MANAGED_CLUSTER_NAME</span><span class="o">=</span>&lt;managed cluster name&gt; <span class="c1"># export MANAGED_CLUSTER_NAME=cluster1</span>
-kubectl config use-context &lt;managed cluster context&gt; <span class="c1"># kubectl config use-context kind-$MANAGED_CLUSTER_NAME</span>
-kubectl create ns open-cluster-management-agent-addon
-kubectl -n open-cluster-management-agent-addon create secret generic hub-kubeconfig --from-file<span class="o">=</span><span class="nv">kubeconfig</span><span class="o">=</span><span class="nv">$PWD</span>/kubeconfig_hub
-make deploy-community-policy-framework-managed
-</code></pre></div><ul>
-<li>The previous command deploy following components:
-<ul>
-<li><a href="https://github.com/open-cluster-management/governance-policy-spec-sync">policy-spec-sync</a></li>
-<li><a href="https://github.com/open-cluster-management/governance-policy-status-sync">policy-status-sync</a></li>
-<li><a href="https://github.com/open-cluster-management/governance-policy-template-sync">policy-template-sync</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Verify that the pods are running with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">$ kubectl get pods -n open-cluster-management-agent-addon 
-NAME                                               READY   STATUS    RESTARTS   AGE
-governance-policy-spec-sync-6474b6d898-tmkw6       1/1     Running   <span class="m">0</span>          2m14s
-governance-policy-status-sync-84cbb795df-pgbgt     1/1     Running   <span class="m">0</span>          2m14s
-governance-policy-template-sync-759b9b556f-mx46t   1/1     Running   <span class="m">0</span>          2m14s
-</code></pre></div></li>
-</ol>
-
+<div class="gdoc-page__anchorwrap"><h2 id="install-from-source">Install from source<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/integration/discover/#install-from-source" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from source" href="#install-from-source"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>To build, run, and sample the discovery operator, clone the repository below and follow the instructions within the README.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Shell" data-lang="Shell">git clone https://github.com/open-cluster-management/discovery.git
+</code></pre></div>
 
     </article>
 

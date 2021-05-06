@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Install MultiClusterHub Operator">
+<meta name="description" content="Core Components">
 
-<title>Install MultiClusterHub Operator | Open Cluster Management</title>
+<title>Core Components | Open Cluster Management</title>
 
 <link rel="icon" href="/favicon/favicon-32x32.png" type="image/x-icon">
 <link rel="stylesheet" href="/main.min.css" media="screen">
 <link rel="stylesheet" href="/custom.css" media="screen">
 
+<link rel="alternate" type="application/rss+xml" href="http://open-cluster-management.github.io/getting-started/core/index.xml" title="Open Cluster Management" />
 <!--Made with Geekdoc theme https://github.com/xoxys/hugo-geekdoc-->
 
 </head>
@@ -126,8 +127,26 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-cluster-manager/" class="gdoc-nav__entry ">
-                        Install Cluster Manager
+                    <a href="/getting-started/core/" class="gdoc-nav__entry is-active">
+                        Core Components
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/core/cluster-manager/" class="gdoc-nav__entry ">
+                        Cluster manager
                     </a>
                 </span>
             
@@ -143,8 +162,50 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/register-cluster/" class="gdoc-nav__entry ">
-                        Install Klusterlet
+                    <a href="/getting-started/core/register-cluster/" class="gdoc-nav__entry ">
+                        Klusterlet agent
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/" class="gdoc-nav__entry ">
+                        Addons and Integrations
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/policy-framework/" class="gdoc-nav__entry ">
+                        Policy framework
                     </a>
                 </span>
             
@@ -160,8 +221,31 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-cluster-lifecycle/" class="gdoc-nav__entry ">
-                        Install Cluster Lifecycle
+                    <a href="/getting-started/integration/policy-controllers/" class="gdoc-nav__entry ">
+                        Policy controllers
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/integration/app-lifecycle/" class="gdoc-nav__entry ">
+                        Application lifecycle management
                     </a>
                 </span>
             
@@ -177,29 +261,8 @@
             <li>
             
                 <span class="flex">
-                    <a href="/getting-started/install-application/" class="gdoc-nav__entry ">
-                        Install Application management
-                    </a>
-                </span>
-            
-
-            
-            
-            </li>
-            
-            
-            
-            
-            
-            
-        
-            
-            
-            <li>
-            
-                <span class="flex">
-                    <a href="/getting-started/install-policy-framework/" class="gdoc-nav__entry ">
-                        Install Policy Framework
+                    <a href="/getting-started/integration/cluster-lifecycle/" class="gdoc-nav__entry ">
+                        Cluster lifecycle management
                     </a>
                 </span>
             
@@ -210,18 +273,8 @@
             
             
         
-            
-            
-            <li>
-            
-                <span class="flex">
-                    <a href="/getting-started/install-policy-controllers/" class="gdoc-nav__entry ">
-                        Install Policy Controllers
-                    </a>
-                </span>
-            
+    </ul>
 
-            
             
             </li>
             
@@ -434,16 +487,15 @@
     <span>
         
             <svg class="icon code"><use xlink:href="#code"></use></svg>
-            <a href="https://github.com/open-cluster-management/website/edit/main/content/getting-started/install-multiclusterhub-operator.md">
+            <a href="https://github.com/open-cluster-management/website/edit/main/content/getting-started/core/_index.md">
                 Edit this page
             </a>
         
     </span>
 </div>
 
-
     <article class="gdoc-markdown">
-        <h1>Install MultiClusterHub Operator</h1>
+        <h1>Core Components</h1>
         
 
 
@@ -451,8 +503,55 @@
     
 
 
-<div class="gdoc-page__anchorwrap"><h2 id="install-from-source">Install from source<a data-clipboard-text="http://open-cluster-management.github.io/getting-started/install-multiclusterhub-operator/#install-from-source" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Install from source" href="#install-from-source"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<p>To build and install the MultiClusterHub Operator as a standalone component, follow the CONTRIBUTING guide referenced in the <a href="https://github.com/open-cluster-management/multicloudhub-operator/blob/main/README.md">source README</a>.</p>
+<p>Install the core control plane that includes cluster registration and manifests distribution on the hub cluster.</p>
+<p>Install the klusterlet agent on the managed cluster so that it can be registered and managed by the hub cluster.</p>
+<!-- spellchecker-disable -->
+
+
+
+  <div class="gdoc-toc gdoc-toc__level--3">
+    
+  <ul>
+    
+      
+      
+      <li>
+      
+        <span>
+          <a href="/getting-started/core/cluster-manager/" class="gdoc-toc__entry">Cluster manager</a>
+        </span>
+      
+
+      
+      
+      </li>
+      
+      
+    
+      
+      
+      <li>
+      
+        <span>
+          <a href="/getting-started/core/register-cluster/" class="gdoc-toc__entry">Klusterlet agent</a>
+        </span>
+      
+
+      
+      
+      </li>
+      
+      
+    
+  </ul>
+
+  </div>
+
+
+
+
+
+<!-- spellchecker-enable -->
 
 
     </article>

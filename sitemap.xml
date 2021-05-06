@@ -19,11 +19,19 @@
   </url>
   
   <url>
+    <loc>http://open-cluster-management.github.io/getting-started/core/cluster-manager/</loc>
+  </url>
+  
+  <url>
     <loc>http://open-cluster-management.github.io/concepts/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-cluster-manager/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/core/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/policy-framework/</loc>
   </url>
   
   <url>
@@ -31,7 +39,11 @@
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/register-cluster/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/core/register-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/policy-controllers/</loc>
   </url>
   
   <url>
@@ -39,31 +51,27 @@
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-cluster-lifecycle/</loc>
-  </url>
-  
-  <url>
     <loc>http://open-cluster-management.github.io/contribute/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-application/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/discover/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-discovery/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/multiclusterhub-operator/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-multiclusterhub-operator/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-policy-framework/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/app-lifecycle/</loc>
   </url>
   
   <url>
-    <loc>http://open-cluster-management.github.io/getting-started/install-policy-controllers/</loc>
+    <loc>http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle/</loc>
   </url>
   
   <url>
