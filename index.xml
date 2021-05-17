@@ -146,5 +146,14 @@ git clone https://github.com/open-cluster-management/discovery.git </description
   Ensure kubectl and kustomize are installed.</description>
     </item>
     
+    <item>
+      <title>APIS</title>
+      <link>http://open-cluster-management.github.io/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://open-cluster-management.github.io/api/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
