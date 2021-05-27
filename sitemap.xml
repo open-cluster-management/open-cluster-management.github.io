@@ -26,11 +26,15 @@
     </url>
     
     <url>
-        <loc>http://open-cluster-management.github.io/getting-started/core</loc>
+        <loc>http://open-cluster-management.github.io/getting-started/integration/policy-framework</loc>
     </url>
     
     <url>
-        <loc>http://open-cluster-management.github.io/getting-started/integration/policy-framework</loc>
+        <loc>http://open-cluster-management.github.io/getting-started/quick-start</loc>
+    </url>
+    
+    <url>
+        <loc>http://open-cluster-management.github.io/getting-started/core</loc>
     </url>
     
     <url>
@@ -54,23 +58,11 @@
     </url>
     
     <url>
-        <loc>http://open-cluster-management.github.io/getting-started/integration/discover</loc>
-    </url>
-    
-    <url>
-        <loc>http://open-cluster-management.github.io/getting-started/integration/multiclusterhub-operator</loc>
-    </url>
-    
-    <url>
         <loc>http://open-cluster-management.github.io/getting-started/integration</loc>
     </url>
     
     <url>
         <loc>http://open-cluster-management.github.io/getting-started/integration/app-lifecycle</loc>
-    </url>
-    
-    <url>
-        <loc>http://open-cluster-management.github.io/getting-started/integration/cluster-lifecycle</loc>
     </url>
     
     <url>
